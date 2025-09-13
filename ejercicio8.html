@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio POO - Vehículos</title>
+</head>
+<body>
+  <h1>Ejercicio de Programación Orientada a Objetos</h1>
+  <div id="resultado"></div>
+
+  <script>
+    
+    class Vehiculo {
+      constructor(marca, modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+      }
+
+      mostrarInfo() {
+        return `Marca: ${this.marca}, Modelo: ${this.modelo}`;
+      }
+    }
+
+    class Coche extends Vehiculo {
+      constructor(marca, modelo, puertas) {
+        super(marca, modelo);
+        this.puertas = puertas;
+      }
+
+      mostrarPuertas() {
+        return `Cantidad de puertas: ${this.puertas}`;
+      }
+    }
+
+ 
+    class Moto extends Vehiculo {
+      constructor(marca, modelo, cilindrada) {
+        super(marca, modelo);
+        this.cilindrada = cilindrada;
+      }
+
+      mostrarCilindrada() {
+        return `Cilindrada: ${this.cilindrada}cc`;
+      }
+    }
+
+
+    class Camion extends Vehiculo {
+      constructor(marca, modelo, capacidadToneladas) {
+        super(marca, modelo);
+        this.capacidadToneladas = capacidadToneladas;
+      }
+
+      mostrarCapacidad() {
+        return `Capacidad de carga: ${this.capacidadToneladas} toneladas`;
+      }
+    }
+
+
+    const miCoche = new Coche("Toyota", "Corolla", 4);
+    const miMoto = new Moto("Yamaha", "R3", 321);
+    const miCamion = new Camion("Volvo", "FH", 18);
+
+
+    const resultado = document.getElementById("resultado");
+    resultado.innerHTML = `
+      <p><strong>Coche:</strong> ${miCoche.mostrarInfo()}<br>${miCoche.mostrarPuertas()}</p>
+      <p><strong>Moto:</strong> ${miMoto.mostrarInfo()}<br>${miMoto.mostrarCilindrada()}</p>
+      <p><strong>Camión:</strong> ${miCamion.mostrarInfo()}<br>${miCamion.mostrarCapacidad()}</p>
+    `;
+  </script>
+</body>
+</html>

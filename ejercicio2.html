@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área de un Triángulo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+    }
+    input, button {
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+    #resultado {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculadora del Área de un Triángulo</h1>
+
+  <label for="base">Base del triángulo:</label><br>
+  <input type="number" id="base" placeholder="Ingresa la base"><br>
+
+  <label for="altura">Altura del triángulo:</label><br>
+  <input type="number" id="altura" placeholder="Ingresa la altura"><br>
+
+  <button onclick="calcularArea()">Calcular Área</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    
+    function areaTriangulo(base, altura) {
+      return (base * altura) / 2;
+    }
+
+    const areaFlecha = (base, altura) => (base * altura) / 2
+    
+    function calcularArea() {
+      const base = parseFloat(document.getElementById('base').value);
+      const altura = parseFloat(document.getElementById('altura').value);
+
+     
+
+      const area1 = areaTriangulo(base, altura);
+      const area2 = areaTrianguloFlecha(base, altura);
+
+      document.getElementById('resultado').innerHTML = `
+        Área del triángulo (función tradicional): <b>${area1}</b><br>
+        Área del triángulo (función flecha): <b>${area2}</b>
+      `;
+    }
+  </script>
+</body>
+</html>

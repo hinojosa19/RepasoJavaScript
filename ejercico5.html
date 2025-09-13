@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <h1>Funcion filter</h1>
+
+  <h3>Agregar Usuario</h3>
+  <input type="text" id="nombre" placeholder="Nombre">
+  <input type="number" id="edad" placeholder="Edad">
+  <button onclick="agregarUsuario()">Agregar Usuario</button>
+
+  <h3>Operaciones</h3>
+  <button onclick="mostrarEdades()">Obtener Edades (map)</button>
+  <button onclick="filtrarMayores()">Filtrar mayores de 27 (filter)</button>
+  <button onclick="sumarEdades()">Sumar edades (reduce)</button>
+
+  <div id="resultado"></div>
+
+  <script>
+   
+    const usuarios = [];
+
+    
+    function agregarUsuario() {
+      const nombre = document.getElementById('nombre').value;
+      const edad = parseInt(document.getElementById('edad').value);
+
+      if (!nombre || isNaN(edad)) return;
+
+      usuarios.push({ nombre, edad });
+      document.getElementById('resultado').textContent = `Usuario agregado: ${nombre}, ${edad} años`;
+      document.getElementById('nombre').value = '';
+      document.getElementById('edad').value = '';
+    }
+
+    
+    function mostrarEdades() {
+      const edades = usuarios.map(usuario => usuario.edad);
+      document.getElementById('resultado').textContent = `Edades de usuarios: [${edades.join(', ')}]`;
+    }
+
+  
+    function filtrarMayores() {
+      const mayores = usuarios.filter(usuario => usuario.edad > 27);
+      document.getElementById('resultado').textContent = `Usuarios mayores de 27: ${mayores.map(u => u.nombre).join(', ')}`;
+    }
+
+    function sumarEdades() {
+      const suma = usuarios.reduce((total, usuario) => total + usuario.edad, 0);
+      document.getElementById('resultado').textContent = `Suma de edades: ${suma}`;
+    }
+  </script>
+</body>
+</html>

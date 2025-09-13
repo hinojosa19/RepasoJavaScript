@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funciones de Orden Superior</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+    }
+    input, select, button {
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+    #resultado {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ejecutar Operación entre Dos Números</h1>
+
+  <label for="num1">Número 1:</label><br>
+  <input type="number" id="num1" placeholder="Ingresa el primer número"><br>
+
+  <label for="num2">Número 2:</label><br>
+  <input type="number" id="num2" placeholder="Ingresa el segundo número"><br>
+
+  <label for="operacion">Elige la operación:</label><br>
+  <select id="operacion">
+    <option value="sumar">Sumar</option>
+    <option value="restar">Restar</option>
+    <option value="multiplicar">Multiplicar</option>
+    <option value="dividir">Dividir</option>
+  </select><br>
+
+  <button onclick="ejecutar()">Calcular</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function ejecutarOperacion(a, b, operacion) {
+      return operacion(a, b);
+    }
+    const sumar = (a, b) => a + b;
+    const restar = (a, b) => a - b;
+    const multiplicar = (a, b) => a * b;
+    const dividir = (a, b) => b === 0 ? 'Error: División por cero' : a / b;
+
+    
+    function ejecutar() {
+      const a = parseFloat(document.getElementById('num1').value);
+      const b = parseFloat(document.getElementById('num2').value);
+      const oper = document.getElementById('operacion').value;
+
+      let operacionFunc;
+
+      switch (oper) {
+        case 'sumar':
+          operacionFunc = sumar;
+          break;
+        case 'restar':
+          operacionFunc = restar;
+          break;
+        case 'multiplicar':
+          operacionFunc = multiplicar;
+          break;
+        case 'dividir':
+          operacionFunc = dividir;
+          break;
+        default:
+          operacionFunc = sumar;
+      }
+
+      const resultado = ejecutarOperacion(a, b, operacionFunc);
+      document.getElementById('resultado').textContent = `Resultado: ${resultado}`;
+    }
+  </script>
+</body>
+</html>

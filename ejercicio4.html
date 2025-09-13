@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito de Compras con Descuento</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+    }
+    input, button {
+      padding: 0.5rem;
+      margin: 0.3rem 0.5rem 0.3rem 0;
+      font-size: 1rem;
+    }
+    #resultado {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Carrito de Compras con Descuento</h1>
+
+  <label for="precio">Precio del producto:</label><br>
+  <input type="number" id="precio" placeholder="Ingresa el precio"><br>
+
+  <button onclick="agregarProducto()">Agregar al carrito</button>
+  <button onclick="aplicarDescuento(0.1)">Aplicar 10% de descuento</button>
+  <button onclick="aplicarDescuento(0.2)">Aplicar 20% de descuento</button>
+
+  <div id="resultado">Total: $0</div>
+
+  <script>
+    
+    function crearCarrito() {
+      let total = 0;
+      return function(precio) {
+        total += precio;
+        return total;
+      };
+    }
+
+    
+    function aplicarDescuento(totalFunc, descuento) {
+      const totalActual = totalFunc(0); 
+      return totalActual * (1 - descuento);
+    }
+
+   
+    const carrito = crearCarrito();
+
+    
+    function agregarProducto() {
+      const precio = parseFloat(document.getElementById('precio').value);
+      if (isNaN(precio)) return;
+      const total = carrito(precio);
+      document.getElementById('resultado').textContent = `Total: $${total}`;
+      document.getElementById('precio').value = '';
+    }
+
+    
+    function aplicarDescuento(descuento) {
+      const totalConDescuento = aplicarDescuento(carrito, descuento);
+      document.getElementById('resultado').textContent = `Total con descuento: $${totalConDescuento.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>

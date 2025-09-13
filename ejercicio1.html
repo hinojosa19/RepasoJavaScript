@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Manipulación del DOM</title>
+  <style>
+    .resaltado {
+      background-color: yellow;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="titulo">Bienvenido a mi página</h1>
+  <p class="texto">Este es un párrafo que será modificado.</p>
+  <ul>
+    <li class="item">Elemento 1</li>
+    <li class="item">Elemento 2</li>
+    <li class="item">Elemento 3</li>
+  </ul>
+  <button id="botonCambiar">Cambiar Título</button>
+
+  <script>
+    
+    const titulo = document.getElementById('titulo');
+    const parrafo = document.querySelector('.texto');
+    const items = document.querySelectorAll('.item');
+    const boton = document.getElementById('botonCambiar');
+
+    
+    boton.addEventListener('click', () => {
+      titulo.textContent = '¡Título actualizado!';
+      parrafo.classList.toggle('resaltado');
+    });
+
+    items.forEach(item => {
+      item.addEventListener('mouseover', () => {
+        item.style.backgroundColor = 'lightblue';
+      });
+      item.addEventListener('mouseout', () => {
+        item.style.backgroundColor = '';
+      });
+    });
+  </script>
+</body>
+</html>
