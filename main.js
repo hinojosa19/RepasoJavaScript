@@ -6,11 +6,11 @@ import { capitalizar, contarCaracteres } from './cadenas.js';
 
 saludo();
 despedida();
-console.log(mensaje);
+document.writeln(mensaje);
 
-console.log("Suma 5 + 3 =", sumar(5, 3));
-console.log("Multiplicación 4 × 6 =", multiplicar(4, 6));
+document.writeln("Suma 5 + 3 =", sumar(5, 3));
+document.writeln("Multiplicación 4 × 6 =", multiplicar(4, 6));
 
 const texto = "hola mundo";
-console.log("Capitalizado:", capitalizar(texto));
-console.log("Número de caracteres:", contarCaracteres(texto));
+document.writeln("Capitalizado:", capitalizar(texto));
+document.writeln("Número de caracteres:", contarCaracteres(texto));

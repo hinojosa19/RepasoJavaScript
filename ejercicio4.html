@@ -4,22 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carrito de Compras con Descuento</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 2rem;
-    }
-    input, button {
-      padding: 0.5rem;
-      margin: 0.3rem 0.5rem 0.3rem 0;
-      font-size: 1rem;
-    }
-    #resultado {
-      margin-top: 1rem;
-      font-weight: bold;
-      color: #333;
-    }
-  </style>
+ 
 </head>
 <body>
   <h1>Carrito de Compras con Descuento</h1>
@@ -43,7 +28,6 @@
       };
     }
 
-    
     function aplicarDescuento(totalFunc, descuento) {
       const totalActual = totalFunc(0); 
       return totalActual * (1 - descuento);
